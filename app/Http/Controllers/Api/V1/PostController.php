@@ -34,8 +34,20 @@ class PostController extends Controller
     }
 
     #Elimine el recurso especificado del almacenamiento.
-    public function destroy(Post $post)
+    public function destroy($id)
     {
-        //Response()->json
+        // Encuentra recurso por su id
+        $post = Post::find($id);
+
+        // Verifica si el recurso existe
+        if (!$post) {
+            return response()->json(['message' => 'Recurso no encontrado'],404);
+        }
+
+        //Elimina el recurso
+        $post->delete();
+
+        //Devuelve una respuesta exitosa
+        return response()->json(['message' => 'Recurso eliminado correctamente'],200);
     }
 }
