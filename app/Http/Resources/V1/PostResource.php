@@ -9,7 +9,7 @@ class PostResource extends JsonResource
 {
     public function toArray(Request $request): array
     {
-        #Configuramos los recursos que deseamos mostrar en la api
+        #Configuramos los recursos que deseamos mostrar en la api v1
         return [
             'title'   => $this->title,
             'slug'    => $this->slug,

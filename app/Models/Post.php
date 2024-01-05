@@ -13,4 +13,10 @@ class Post extends Model
     {
         return substr($this->content, 0, 120);
     }
+
+    public function user()
+    {
+        #Un post pertenece a un usuario
+        return $this->belongsTo(User::class);
+    }
 }

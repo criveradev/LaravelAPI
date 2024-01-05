@@ -7,13 +7,19 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class PostResource extends JsonResource
 {
-    /**
-     * Transform the resource into an array.
-     *
-     * @return array<string, mixed>
-     */
     public function toArray(Request $request): array
     {
-        return parent::toArray($request);
+        #Configuramos los recursos que deseamos mostrar en la api v2
+        return [
+            'id'        => $this->id,
+            'post_name' => $this->title,
+            'slug'      => $this->slug,
+            'content'   => $this->content,
+            'author'    => [
+                'name'  => $this->user->name,
+                'email' => $this->user->email
+            ],
+            'created'  => $this->created_at
+        ];
     }
 }
