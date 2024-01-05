@@ -12,7 +12,7 @@ class PostController extends Controller
     #Mostrar una lista del recurso.
     public function index()
     {
-        //
+        return PostResource::collection(Post::latest()->paginate());
     }
 
     #Almacene un recurso recién creado en el almacenamiento.
@@ -36,6 +36,6 @@ class PostController extends Controller
     #Elimine el recurso especificado del almacenamiento.
     public function destroy(Post $post)
     {
-        //
+        //Response()->json
     }
 }
